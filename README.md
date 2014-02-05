@@ -17,6 +17,8 @@ How to use:
 Make sure you have php 5.5 (http://www.php.net/) or later installed.   
 Also make sure you have imagemagick (http://www.imagemagick.org/script/index.php) installed. 
 
+Copy the script into a new directory on your computer.
+
 Put a png file which fulfills the following requirements into the directory where the script is:
 
 - Without transparency
@@ -33,7 +35,7 @@ Examples of a bad choice: photo, colourful drawings with many details, words wit
 
 Make sure you have the rights to reproduce the picture (for example, take a public domain picture from http://openclipart.org/ ).
 
-Make sure you have the rights to execute scripts in that directory.   
+Make sure you have the rights to execute scripts in the script directory.   
 On the command line, go into the directory where the script is and enter
  
 php BookArtGenerator.php
