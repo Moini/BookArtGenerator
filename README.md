@@ -41,7 +41,10 @@ php BookArtGenerator.php
 Answer the questions regarding your book.  
 Be sure to have a ruler on hand. 
 
-When the program has finished,to preview the result, look into the file named \*\_preview.png.  
+When the program has finished, to preview the result, look into the file named \*\_preview.png.
+Don't worry too much about the aspect ratio, this will likely look distorted (too broad usually).   
+You will be able to control this by opening your book wider or pushing it more closed.  
+Only check if the details are all there and if the alternating page folding pattern creation has worked.  
 To fold your pattern, follow the instructions in \*\_pattern.png.
  
 If you make a beautiful object of art, please don't hesitate to send me a picture!
