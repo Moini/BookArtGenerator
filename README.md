@@ -41,7 +41,7 @@ On the command line, go into the directory where the script is and enter
 php BookArtGenerator.php
  
 Answer the questions regarding your book.  
-Be sure to have a ruler on hand. 
+Be sure to have a ruler - and of course, the book - on hand. 
 
 When the program has finished, to preview the result, look into the file named \*\_preview.png.
 Don't worry too much about the aspect ratio, this will likely look distorted (too broad usually). Every page is represented by an orthogonal line. The spaces in between are just to separate the lines more clearly for easier controlling.   
