@@ -34,20 +34,20 @@
 function getParametersFromUser()
 {
 	//get number of first page
-	echo "Please tell me the number of the first page in your book!\n";
+	echo "Please tell me the number of the first even page in your book!\n";
 	
 	while (TRUE)
 	{
-		echo "Number of first page: ";
+		echo "Number of first even page: ";
 		$fp = fopen("php://stdin","r");
 		$answer_array = explode( " " , trim(fgets($fp)));
-		if (count($answer_array) == 1 && is_numeric($answer_array[0]) && ($answer_array[0] >= 0))
+		if (count($answer_array) == 1 && is_numeric($answer_array[0]) && ($answer_array[0] >= 0) && ($answer_array[0]%2 == 0))
 		{
 			break;
 		}
 		else
 		{
-			echo "\nSorry, you must enter a valid page number!\n";
+			echo "\nSorry, you must enter a valid page number (e.g. 8)!\n";
 		}
 	}
 	
@@ -55,27 +55,27 @@ function getParametersFromUser()
 	
 	//get number of last page
 	
-	echo "\nNow, please tell me the number of the last page of your book!\n";
+	echo "\nNow, please tell me the number of the last even page of your book!\n";
 	
 	while (TRUE)
 	{
-		echo "Number of last page: ";
+		echo "Number of last even page: ";
 		$lp = fopen("php://stdin","r");
 		$answer_array = explode( " " , trim(fgets($lp)));
-		if (count($answer_array) == 1 && is_numeric($answer_array[0]) && ($answer_array[0] > $firstPageNumber))
+		if (count($answer_array) == 1 && is_numeric($answer_array[0]) && ($answer_array[0] > $firstPageNumber) && ($answer_array[0]%2 == 0))
 		{
 			break;
 		}
 		else
 		{
-			echo "\nSorry, you must enter a valid page number!\n";
+			echo "\nSorry, you must enter a valid page number (e.g. 380)!\n";
 		}
 	}
 	
 	$lastPageNumber = $answer_array[0];
 	
 	//get height of book
-	echo "\nNow I need to know the height of your book (doesn't matter if it's cm or inch, as long as you stay consistent, and dot as decimal separator)\n";
+	echo "\nNow I need to know the height of your book (doesn't matter if the unit is cm or inch (only type in the number), as long as you stay consistent, and dot as decimal separator)\n";
 	
 	while (TRUE)
 	{
@@ -144,7 +144,7 @@ function createTempPNG($params_array)
 	$last = $params_array[1];
 	$height = $params_array[2];
 	$filename = $params_array[3];
-	$numPages = $last - $first + 1;
+	$numPages = ($last - $first)/2 + 1;
 	$imageheight = 10 * $height; //so the output is exact by one decimal after the decimal point, e.g. 10.5 cm/inch
 	
 	//convert image to correct size and colorspace
@@ -168,7 +168,7 @@ function createBasePattern($params_array)
 	$last = $params_array[1]; //page number
 	$height = $params_array[2]; //of book
 	$filename = $params_array[3];
-	$numPages = $last - $first + 1;
+	$numPages = ($last - $first)/2 + 1;
 	$imageheight = 10 * $height; //so the output is exact by one decimal after the decimal point, e.g. 10.5 cm/inch
 	
 	//open black and white image
@@ -310,14 +310,14 @@ function createFinalPattern($pattern)
 function createPreview($finalPattern, $imageheight, $previewWidth, $filename)
 {
 	//header ("Content-type: image/png");
-	$previewImage = @imagecreatetruecolor($previewWidth, $imageheight)
+	$previewImage = @imagecreatetruecolor($previewWidth, $imageheight*2)
       or die ("\nCould not create preview image!\n");
 	$white = ImageColorAllocate ($previewImage, 255, 255, 255);
 	$black = ImageColorAllocate ($previewImage, 0, 0, 0);
 	imagefill($previewImage, 0, 0, $white);
 	foreach ($finalPattern as $column => $bandslist)
 	{
-		imageline($previewImage, $column*3-1, $bandslist[0]["start"], $column*3-1, $bandslist[0]["end"]-1, $black);	
+		imageline($previewImage, $column*2-1, ($bandslist[0]["start"])*2, $column*2-1, ($bandslist[0]["end"]-1)*2, $black);	
 	}
 	$imagename = preg_replace( "/\.png\z/i" , "" , $filename)."_preview.png";
 	ImagePNG ($previewImage, $imagename);
@@ -348,7 +348,7 @@ Page	     Top Fold	     Bottom Fold
 	{
 		$upperCorner = $contents[0]["start"]/10;
 		$lowerCorner = $contents[0]["end"]/10;
-		$pagenum = $column + $offset;
+		$pagenum = $column*2 + $offset;
 		
 		$string = $string."$pagenum		$upperCorner		$lowerCorner\n";
 		
@@ -392,10 +392,10 @@ function runBAG()
 	$last = $params_array[1];
 	$height = $params_array[2];
 	$filename = $params_array[3];
-	$numPages = $last - $first + 1;
+	$numPages = ($last - $first)/2 + 1;
 	$imageheight = 10 * $height; //so the output is exact by one decimal after the decimal point, e.g. 10.5 cm/inch
-	$previewWidth = 3 * $numPages;
-	$offset = $first-1; //describes the relation between page number and picture column number
+	$previewWidth = 2 * $numPages;
+	$offset = $first; //describes the relation between page number and picture column number
 	
 	//check for holes in pattern
 	if (!holesCheckPassed($pattern))
