@@ -42,8 +42,8 @@ Answer the questions regarding your book.
 Be sure to have a ruler on hand. 
 
 When the program has finished, to preview the result, look into the file named \*\_preview.png.
-Don't worry too much about the aspect ratio, this will likely look distorted (too broad usually).   
-You will be able to control this by opening your book wider or pushing it more closed.  
+Don't worry too much about the aspect ratio, this will likely look distorted (too broad usually). Every page is represented by an orthogonal line. The spaces in between are just to separate the lines more clearly for easier controlling.   
+You will be able to control the aspect ratio of the final result by opening your book wider or pushing it more closed.  
 Only check if the details are all there and if the alternating page folding pattern creation has worked.  
 To fold your pattern, follow the instructions in \*\_pattern.png.
  
