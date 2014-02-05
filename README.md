@@ -27,6 +27,7 @@ Put a png file which fulfills the following requirements into the directory wher
 - If there are holes or gaps in the object, make sure that there are no more than 5 holes in every orthogonal line. Less will turn out better.
 
 Examples of a good choice: continuously written short words, single letters, simple silhouettes, all black on white...
+
 Examples of a bad choice: photo, colourful drawings with many details, words with more than 6 letters,...
 
 
