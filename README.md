@@ -12,6 +12,7 @@ To run, it requires php 5.5 or higher and imagemagick.
 The program was only tested on Linux, so I do not know if it works on Windows. If you try it out, please report, so that I can update this information.
 
 How to use:
+
 Make sure you have php 5.5 (http://www.php.net/) or later installed. 
 Also make sure you have imagemagick (http://www.imagemagick.org/script/index.php) installed. 
 
