@@ -41,8 +41,8 @@ php BookArtGenerator.php
 Answer the questions regarding your book. 
 Be sure to have a ruler on hand. 
 
-When the program has finished,to preview the result, look into the file named *_preview.png.
-To fold your pattern, follow the instructions in *_pattern.png.
+When the program has finished,to preview the result, look into the file named \*_preview.png.
+To fold your pattern, follow the instructions in \*_pattern.png.
  
 If you make a beautiful object of art, please don't hesitate to send me a picture!
 
