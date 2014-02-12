@@ -145,7 +145,7 @@ function createTempPNG($params_array)
 	$height = $params_array[2];
 	$filename = $params_array[3];
 	$numPages = ($last - $first)/2 + 1;
-	$imageheight = 10 * $height; //so the output is exact by one decimal after the decimal point, e.g. 10.5 cm/inch
+	$imageheight = 100 * $height; //so the output is exact by two decimals after the decimal point, e.g. 10.5 cm/inch
 	
 	//convert image to correct size and colorspace
 	$output = array("blubb");//only necessary as a placeholder
@@ -169,7 +169,7 @@ function createBasePattern($params_array)
 	$height = $params_array[2]; //of book
 	$filename = $params_array[3];
 	$numPages = ($last - $first)/2 + 1;
-	$imageheight = 10 * $height; //so the output is exact by one decimal after the decimal point, e.g. 10.5 cm/inch
+	$imageheight = 100 * $height; //so the output is exact by two decimals after the decimal point, e.g. 10.5 cm/inch
 	
 	//open black and white image
 	$image = ImageCreateFromPNG("tempfile.png");
@@ -310,14 +310,16 @@ function createFinalPattern($pattern)
 function createPreview($finalPattern, $imageheight, $previewWidth, $filename)
 {
 	//header ("Content-type: image/png");
-	$previewImage = @imagecreatetruecolor($previewWidth, $imageheight*2)
+	print "\npreview image height = $imageheight\n";
+	$previewImage = @imagecreatetruecolor($previewWidth, $imageheight*10)
       or die ("\nCould not create preview image!\n");
 	$white = ImageColorAllocate ($previewImage, 255, 255, 255);
 	$black = ImageColorAllocate ($previewImage, 0, 0, 0);
 	imagefill($previewImage, 0, 0, $white);
 	foreach ($finalPattern as $column => $bandslist)
 	{
-		imageline($previewImage, $column*2-1, ($bandslist[0]["start"])*2, $column*2-1, ($bandslist[0]["end"]-1)*2, $black);	
+		imageline($previewImage, $column*3-1, ($bandslist[0]["start"]), $column*3-1, ($bandslist[0]["end"]-1), $black);	
+		#imageline($previewImage, $column*2-1, ($bandslist[0]["start"])*2, $column*2-1, ($bandslist[0]["end"]-1)*2, $black);	
 	}
 	$imagename = preg_replace( "/\.png\z/i" , "" , $filename)."_preview.png";
 	ImagePNG ($previewImage, $imagename);
@@ -346,8 +348,8 @@ Page	     Top Fold	     Bottom Fold
 
 	foreach ($finalPattern as $column => $contents)
 	{
-		$upperCorner = $contents[0]["start"]/10;
-		$lowerCorner = $contents[0]["end"]/10;
+		$upperCorner = $contents[0]["start"]/100;
+		$lowerCorner = $contents[0]["end"]/100;
 		$pagenum = $column*2 + $offset;
 		
 		$string = $string."$pagenum		$upperCorner		$lowerCorner\n";
@@ -394,7 +396,7 @@ function runBAG()
 	$filename = $params_array[3];
 	$numPages = ($last - $first)/2 + 1;
 	$imageheight = 10 * $height; //so the output is exact by one decimal after the decimal point, e.g. 10.5 cm/inch
-	$previewWidth = 2 * $numPages;
+	$previewWidth = 3 * $numPages;
 	$offset = $first; //describes the relation between page number and picture column number
 	
 	//check for holes in pattern
