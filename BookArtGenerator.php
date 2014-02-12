@@ -310,7 +310,6 @@ function createFinalPattern($pattern)
 function createPreview($finalPattern, $imageheight, $previewWidth, $filename)
 {
 	//header ("Content-type: image/png");
-	print "\npreview image height = $imageheight\n";
 	$previewImage = @imagecreatetruecolor($previewWidth, $imageheight*10)
       or die ("\nCould not create preview image!\n");
 	$white = ImageColorAllocate ($previewImage, 255, 255, 255);
