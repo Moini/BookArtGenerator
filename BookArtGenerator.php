@@ -75,7 +75,7 @@ function getParametersFromUser()
 	$lastPageNumber = $answer_array[0];
 	
 	//get height of book
-	echo "\nNow I need to know the height of your book (doesn't matter if the unit is cm or inch (only type in the number), as long as you stay consistent, and dot as decimal separator)\n";
+	echo "\nNow I need to know the height of your book pages. It doesn't matter if the unit is cm or inch (only type in the number), as long as you stay consistent. Use the dot as decimal separator, if necessary.\n";
 	
 	while (TRUE)
 	{
