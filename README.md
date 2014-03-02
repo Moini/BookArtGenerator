@@ -8,16 +8,17 @@ Folding the pattern turns a dull book into real art.
 
 The program file for 'BookArtGenerator' is BookArtGenerator.php. 
 
-To run, it requires php 5.5 or higher and imagemagick.  
-The program was only tested on Linux, so I do not know if it works on Windows.  
-If you try it out, please report, so that I can update this information.
+To run, it requires php 5.5 or higher (with GD library, which is usually included) and imagemagick.  
+I can only debug the program on Linux, so if you have difficulties on Windows, you will need to help with debugging.
+The version for Windows will only run in the Windows command line, the default version only runs in Unix-like environments.
 
 How to use:
 
-Make sure you have php 5.5 (http://www.php.net/) or later installed.   
+Make sure you have php 5.5 (http://www.php.net/) or later with the GD library installed.
+On Windows, it may be easier to install WAMP, which includes php and saves you some configuration.
 Also make sure you have imagemagick (http://www.imagemagick.org/script/index.php) installed. 
 
-Copy the script into a new directory on your computer.
+Copy the script (either BookArtGenerator.php for Linux or BookArtGenerator-Win.php for Windows) into a new directory on your computer.
 
 Put a png file which fulfills the following requirements into the directory where the script is:
 
@@ -39,6 +40,10 @@ Make sure you have the rights to execute scripts in the script directory.
 On the command line, go into the directory where the script is and enter
  
 php BookArtGenerator.php
+or
+php BookArtGenerator-Win.php
+
+depending on the version you downloaded.
  
 Answer the questions regarding your book.  
 Be sure to have a ruler - and of course, the book - on hand. 
