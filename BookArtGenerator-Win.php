@@ -301,7 +301,7 @@ function createFinalPattern($pattern)
 		}
 		else
 		{
-			$finalPattern[$column] = [$bandslist[$column%$numBands]];
+			$finalPattern[$column] = array($bandslist[$column%$numBands]);
 		}	
 	}
 	return ($finalPattern);
