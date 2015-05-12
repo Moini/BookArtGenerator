@@ -5,6 +5,7 @@ A PHP script which will create a folding pattern for you if you provide it with 
 
 Folding the pattern turns a dull book into real art.
 
+NOTE: There's also an improved python version of this script available at https://github.com/Moini/BookArtGeneratorPy
 
 The program file for 'BookArtGenerator' is BookArtGenerator.php. 
 
